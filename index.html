@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Office Comparison</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Box Office Comparison</h1>
+
+    <h2>2025-11-13 Box Office</h2>
+    <table id="table-20251113">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Movie</th>
+                <th>Sales</th>
+                <th>Audience</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>나우 유 씨 미 3</td><td>629,835,950</td><td>68,496</td></tr>
+            <tr><td>2</td><td>극장판 체인소 맨: 레제편</td><td>210,524,310</td><td>21,558</td></tr>
+            <tr><td>3</td><td>퍼스트 라이드</td><td>169,110,510</td><td>19,091</td></tr>
+            <tr><td>4</td><td>프레데터: 죽음의 땅</td><td>113,694,000</td><td>11,990</td></tr>
+            <tr><td>5</td><td>8번 출구</td><td>46,615,620</td><td>4,815</td></tr>
+            <tr><td>6</td><td>코렐라인</td><td>24,832,000</td><td>2,629</td></tr>
+            <tr><td>7</td><td>세계의 주인</td><td>23,011,960</td><td>2,324</td></tr>
+            <tr><td>8</td><td>극장판 귀멸의 칼날: 무한성편</td><td>21,891,300</td><td>2,266</td></tr>
+            <tr><td>9</td><td>부고니아</td><td>20,780,400</td><td>2,113</td></tr>
+            <tr><td>10</td><td>명탐정 코난: 척안의 잔상</td><td>18,988,000</td><td>1,719</td></tr>
+        </tbody>
+    </table>
+
+    <h2>2025-11-14 Box Office</h2>
+    <table id="table-20251114">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Movie</th>
+                <th>Sales</th>
+                <th>Audience</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>나우 유 씨 미 3</td><td>888,627,590</td><td>92,707</td></tr>
+            <tr><td>2</td><td>극장판 체인소 맨: 레제편</td><td>236,024,880</td><td>22,915</td></tr>
+            <tr><td>3</td><td>프레데터: 죽음의 땅</td><td>160,174,770</td><td>16,357</td></tr>
+            <tr><td>4</td><td>퍼스트 라이드</td><td>133,302,400</td><td>15,216</td></tr>
+            <tr><td>5</td><td>8번 출구</td><td>44,358,870</td><td>4,417</td></tr>
+            <tr><td>6</td><td>부고니아</td><td>30,911,500</td><td>3,099</td></tr>
+            <tr><td>7</td><td>극장판 귀멸의 칼날: 무한성편</td><td>28,721,250</td><td>2,863</td></tr>
+            <tr><td>8</td><td>코렐라인</td><td>23,483,000</td><td>2,462</td></tr>
+            <tr><td>9</td><td>세계의 주인</td><td>23,323,750</td><td>2,335</td></tr>
+            <tr><td>10</td><td>난징사진관</td><td>16,435,300</td><td>1,877</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Comparison Chart</h2>
+    <canvas id="comparisonChart" width="800" height="400"></canvas>
+
+    <script>
+        const ctx = document.getElementById('comparisonChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['나우 유 씨 미 3', '극장판 체인소 맨: 레제편', '퍼스트 라이드', '프레데터: 죽음의 땅', '8번 출구', '코렐라인', '세계의 주인', '극장판 귀멸의 칼날: 무한성편', '부고니아', '난징사진관'],
+                datasets: [
+                    {
+                        label: '2025-11-13 Sales',
+                        data: [629835950, 210524310, 169110510, 113694000, 46615620, 24832000, 23011960, 21891300, 20780400, 18988000],
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: '2025-11-14 Sales',
+                        data: [888627590, 236024880, 160174770, 133302400, 44358870, 23483000, 23323750, 28721250, 30911500, 16435300],
+                        backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Box Office Sales Comparison'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

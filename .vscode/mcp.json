@@ -1,0 +1,9 @@
+{
+	"servers": {
+		"sample-mcp-server": {
+			"url": "https://st55386.ispot.cc/mcp/sample/",
+			"type": "http"
+		}
+	},
+	"inputs": []
+}
